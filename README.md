@@ -1,39 +1,28 @@
 # 6.824
 
 #### 介绍
-{**以下是 Gitee 平台说明，您可以替换此简介**
-Gitee 是 OSCHINA 推出的基于 Git 的代码托管平台（同时支持 SVN）。专为开发者提供稳定、高效、安全的云端软件开发协作平台
-无论是个人、团队、或是企业，都能够用 Gitee 实现代码托管、项目管理、协作开发。企业项目请看 [https://gitee.com/enterprises](https://gitee.com/enterprises)}
+本项目是基于 6.824 课程要求实现的 Raft 算法。Raft 是一种为了管理复制日志而设计的一致性算法，它提供了和 Paxos 算法相同的功能和性能，但是它的算法结构和 Paxos 不同，使得 Raft 算法更加易于理解并且更容易在工程中实现。本项目旨在深入理解 Raft 算法的原理和实现细节，为分布式系统的开发打下坚实的基础。
 
 #### 软件架构
 软件架构说明
+本项目主要分为以下几个模块：
+- Raft 核心模块：实现 Raft 算法的核心逻辑，包括领导者选举、日志复制、安全性等功能。
+- 网络通信模块：负责节点之间的消息传递，确保各个节点能够及时、准确地交换信息。
+- 状态机模块：用于应用日志中的命令，保证所有节点的状态一致。
 
+模块交互
+- Raft 核心模块根据不同的状态（领导者、跟随者、候选人）处理各种事件，并向网络通信模块发送消息请求。
+- 网络通信模块接收其他节点的消息，并将其传递给 Raft 核心模块进行处理。
+- Raft 核心模块将达成一致的日志条目传递给状态机模块进行应用。
 
 #### 安装教程
-
-1.  xxxx
-2.  xxxx
-3.  xxxx
-
-#### 使用说明
-
-1.  xxxx
-2.  xxxx
-3.  xxxx
-
-#### 参与贡献
-
-1.  Fork 本仓库
-2.  新建 Feat_xxx 分支
-3.  提交代码
-4.  新建 Pull Request
+环境准备
+Go 语言环境：本项目使用 Go 语言实现，需要安装 Go 1.16 及以上版本。你可以从 Go 官方网站 下载并安装。
+Git：用于克隆项目代码。你可以从 Git 官方网站 下载并安装。
 
 
 #### 特技
-
-1.  使用 Readme\_XXX.md 来支持不同的语言，例如 Readme\_en.md, Readme\_zh.md
-2.  Gitee 官方博客 [blog.gitee.com](https://blog.gitee.com)
-3.  你可以 [https://gitee.com/explore](https://gitee.com/explore) 这个地址来了解 Gitee 上的优秀开源项目
-4.  [GVP](https://gitee.com/gvp) 全称是 Gitee 最有价值开源项目，是综合评定出的优秀开源项目
-5.  Gitee 官方提供的使用手册 [https://gitee.com/help](https://gitee.com/help)
-6.  Gitee 封面人物是一档用来展示 Gitee 会员风采的栏目 [https://gitee.com/gitee-stars/](https://gitee.com/gitee-stars/)
+1. 使用 Readme_XXX.md 来支持不同的语言：例如 Readme_en.md, Readme_zh.md。
+2. 学习更多关于 Raft 算法的知识：可以参考 Raft 官方网站 和 6.824 课程网站。
+3. 参与社区讨论：加入 Raft 算法相关的社区或论坛，与其他开发者交流经验和想法。
+4. 关注优秀开源项目：可以通过 GitHub Explore 了解更多优秀的分布式系统开源项目。
